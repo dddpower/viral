@@ -30,19 +30,19 @@ def single_codon_mutation_independent_prob(
         p *= mut_prob_table[ch1 + ch2]
     return p
 
-def codon_aa_mutation_independent_prob(
-    wildtype_codon_table, prob_table, wildtype_position, target_aa
-):
-    def get_prob_from_table(source: str, dest: str, table: dict):
-        return table[source + dest]
-
-    to_codons(target_aa)
-    return sum(
-        map(
-            lambda x: single_codon_mutation_independent_prob(wt_codon, x, p_table),
-            aa_to_codons(mut_aa),
-        )
-    )
+# def codon_aa_mutation_independent_prob(
+#     wildtype_codon_table, prob_table, wildtype_position, target_aa
+# ):
+#     def get_prob_from_table(source: str, dest: str, table: dict):
+#         return table[source + dest]
+# 
+#     wt_codon = to_codons(target_aa)
+#     return sum(
+#         map(
+#             lambda x: single_codon_mutation_independent_prob(wt_codon, x, p_table),
+#             aa_to_codons(mut_aa),
+#         )
+#     )
 
 
 
