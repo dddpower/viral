@@ -1,0 +1,10 @@
+Model	Escape AUC (Influenza A H1)	Escape AUC (Influenza A H3)	Escape AUC (HIV-1 Env BG505)	Escape AUC (SARS-CoV-2)	Escape AUC (SARS-CoV-2 RBD)
+mafft	0.691	0.669	0.518	0.618	0.500
+EVcouplings (indep)	0.739	0.753	0.564	0.717	0.466
+EVcouplings (epist)	0.761	0.753	0.581	0.751	0.504
+Grammaticality	0.790	0.678	0.596	0.797	0.492
+Bepler	0.345	0.414	0.446	0.540	0.443
+TAPE transformer	0.403	0.431	0.412	0.682	0.510
+UniRep	0.541	0.535	0.490	0.732	0.500
+Semantic change	0.639	0.714	0.598	0.636	0.591
+CSCS	0.808	0.766	0.636	0.845	0.567
