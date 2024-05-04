@@ -31,10 +31,10 @@ Define calc_funtion for calculating codon mutation weight values here.
 Signature of calc_func should be (virus_type: Virus, wildtype_position: int, target_codon: str) -> weight value: float
 """
 
+
 """
 applied position independent mutation probability.
 """
-
 
 def single_codon_mutation_independent_prob(
     virus_type, wildtype_position, target_codon

@@ -1,7 +1,9 @@
 from Bio.Data import CodonTable
 import pandas as pd
-from itertools import permutations
+from itertools import permutations, product
 import json
+import argparse
+from enum import Enum, auto
 
 # receive amino_acid and translate it to 3char codon
 def to_codons(ammino_acid):
@@ -9,65 +11,63 @@ def to_codons(ammino_acid):
     codons = [codon for codon, aa in std_codon_table.forward_table.items() \
         if aa == ammino_acid]
     assert len(codons) > 0, f'ammino_acid = {ammino_acid}'
-    # print(f'{ammino_acid} is mapped to {codons}')
     return codons
-# 
-# # testing to_codons()
-# def list_all_to_codons():
-#     aas = list("ARNDCEQGHILKMFPSTWYV")
-#     return list(map(to_codons, aas))
-
-def single_codon_mutation_independent_prob(
-    virus_type, wildtype_position, target_codon
-) -> float:
-    # flu_cscs_df = pd.read_csv("results/flu/semantics/analyze_semantics_flu_h1_bilstm_512.txt", delimiter='\t')
-    # cov_cscs_df = pd.read_csv("results/cov/semantics/analyze_semantics_cov_bilstm_512.txt", delimiter='\t')
-    wildtype_file, mut_prob_file = ("cov_wildtype_codon.csv", "cov_static_probability.json")
-    wildtype_df = pd.read_csv(wildtype_file)
-    mut_prob_table = json.load(open(mut_prob_file))
-    p = 1
-    for ch1, ch2 in zip(wildtype_df, target_codon):
-        p *= mut_prob_table[ch1 + ch2]
-    return p
-
-# def codon_aa_mutation_independent_prob(
-#     wildtype_codon_table, prob_table, wildtype_position, target_aa
-# ):
-#     def get_prob_from_table(source: str, dest: str, table: dict):
-#         return table[source + dest]
-# 
-#     wt_codon = to_codons(target_aa)
-#     return sum(
-#         map(
-#             lambda x: single_codon_mutation_independent_prob(wt_codon, x, p_table),
-#             aa_to_codons(mut_aa),
-#         )
-#     )
 
 
 
+# class Virus(Enum):
+#     COV = auto()
+#     FLU = auto()
+#     HIV = auto()
 
-cov_wildtype_codon_info = pd.read_csv("cov_wildtype_codon.csv")
+if __name__ =="__main__":
+    print("need to input virus type when excuting the program")
+
+# Wildtype position table (Header: pos,Codon,1AA)
+wt_positions = pd.read_csv("cov_wildtype_codon.csv")
+
+# Probability table
+with open("cov_static_probability.json", "r") as json_fs:
+    pos_indep_prob_table = json.load(json_fs)
+
+# Load position-dependent probability table
 input_file_name = "12276_2021_658_MOESM2_ESM.xlsx"
-cov_prob_table = pd.read_excel(input_file_name, sheet_name=3)
+pos_dep_prob_table = pd.read_excel(input_file_name, sheet_name=3)
+
+def codon_from_aa_pos(source_position):
+    return wt_positions[wt_positions['pos'] == source_position]['Codon'].values[0]
+
+
+"""Let's build_independent table"""
+def c2a_indep_prob(source_position, target:str):
+    """wildtype codon to mutant amino_acid independent probability"""
+    source_codon = codon_from_aa_pos(source_position)
+    target_codons = to_codons(target)
+    target_codons = filter(lambda x: x != source_codon, target_codons)
+    def sum_iter():
+        for target_codon in target_codons:
+            p = 1
+            for s, t in zip(source_codon, target_codon):
+                p *= pos_indep_prob_table[s + t]
+            yield p
+        
+    return sum(sum_iter())
+
+
+def test_c2a_indep_prob(position):
+    """test function for  c2a_indep_prob"""
+    all_amino_acids = "ARNDCEQGHILKMFPSTWYV"
+    return map(lambda x: c2a_indep_prob(position, x), (_ for _ in all_amino_acids))
+
+
 # must ignore first 'M'
-def position_dependent_codon_weight(aa_source_position, mut_codon, prob_table):
-
-    def codon_from_aa_pos(aa_pos, wildtype_codon_info):
-        return wildtype_codon_info[wildtype_codon_info["pos"] == aa_pos]["Codon"].values[0]
-
-
+def pos_dep_codon_weight(aa_source_position, mut_codon):
+    """Compute the position-dependent mutation weight"""
     def codon_weight(current: str , remain_permutation_number):
-
-
-        def single_prob(target_str, prob_table):
-            # source and mutant are same. return identity element for multiplication
-            if target_str[1] == target_str[3]:
-                return 1
-
-            sum = prob_table["SARS-CoV-2"].sum()
-            val = prob_table[
-                prob_table["Substition type"] == target_str
+        def single_prob(keyword):
+            sum = pos_dep_prob_table["SARS-CoV-2"].sum()
+            val = pos_dep_prob_table[
+                pos_dep_prob_table["Substition type"] == keyword
             ]["SARS-CoV-2"].values[0]
             return val / sum
 
@@ -82,26 +82,25 @@ def position_dependent_codon_weight(aa_source_position, mut_codon, prob_table):
                     + mut_codon[head - 1]
                     + current[head + 1]
                 )
-        p = single_prob(keyword, prob_table)
+        p = 1 if keyword[1] == keyword[3] else single_prob(keyword)
         new_current = current[:head] + mut_codon[head - 1] + current[head + 1:]
         result = p * codon_weight(new_current, remain_permutation_number[head + 1 :])
         return 0 if result == 1 else result
 
-    pre = codon_from_aa_pos(aa_source_position - 1, cov_wildtype_codon_info)[2]
-    codon = codon_from_aa_pos(aa_source_position, cov_wildtype_codon_info)
-    end = codon_from_aa_pos(aa_source_position + 1, cov_wildtype_codon_info)[0]
+    pre = codon_from_aa_pos(aa_source_position - 1)[2]
+    codon = codon_from_aa_pos(aa_source_position)
+    end = codon_from_aa_pos(aa_source_position + 1)[0]
     return sum(codon_weight(pre + codon + end, _) for _ in permutations(range(1, 4)))
 
 
-def all_codons():
-    codon_table = CodonTable.unambiguous_dna_by_id[1]
-    return codon_table.forward_table.keys()
 
 
 # from 2 ~ until aa_pos
-def test_position_dependent_codon_weight(aa_pos):
-    for _ in range(2, aa_pos + 1):
-        yield list(map(lambda x: position_dependent_codon_weight(aa_pos, x, cov_prob_table), get_all_codons()))
+def test_pos_dep_codon_weight(aa_pos):
+    def all_codons():
+        codon_table = CodonTable.unambiguous_dna_by_id[1]
+        return codon_table.forward_table.keys()
 
-if __name__ == "__main__":
-    print("entered main scope")
+
+    for _ in range(2, aa_pos + 1):
+        yield list(map(lambda x: pos_dep_codon_weight(aa_pos, x), all_codons()))
