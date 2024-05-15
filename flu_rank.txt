@@ -1,3 +1,12 @@
+mean and std of grammar rank is 2255.029411764706, 1971.1109276422414
+mean and std of semantic rank is 3872.1470588235293, 2656.129467378521
+mean and std of pos_indep_rank is 4823.888235294117, 3035.615971217842
+mean and std of pos_dep_rank is 5391.235294117647, 3197.4776454920698
+mean and std of grammar rank+semantic rank is 6127.176470588235, 2961.9438950312538
+mean and std of grammar rank+pos_indep_rank is 7078.917647058824, 4149.496572336065
+mean and std of semantic rank+pos_indep_rank is 8696.035294117648, 3491.908172495017
+mean and std of grammar rank+pos_dep_rank is 7646.264705882353, 4407.4727647621075
+mean and std of semantic rank+pos_dep_rank is 9263.382352941177, 3690.9096921896853
 mean and std of grammar rank+semantic rank rank is 2058.205882352941, 1914.859297431348
 mean and std of grammar rank+pos_indep_rank rank is 3189.929411764706, 2414.1186211289014
 mean and std of grammar rank+pos_dep_rank rank is 3540.5529411764705, 2555.9632027144585

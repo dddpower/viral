@@ -1,0 +1,37 @@
+mean and std of grammar rank is 5147.180124223602, 3505.294092312724
+mean and std of semantic rank is 5108.248447204969, 3544.1831358421923
+mean and std of pos_dep_rank is 5158.149068322981, 3550.8940022394013
+mean and std of grammar rank+semantic rank is 10255.42857142857, 5182.307453869229
+mean and std of grammar rank+pos_dep_rank is 10305.329192546584, 5692.623376766196
+mean and std of semantic rank+pos_dep_rank is 10266.39751552795, 4620.4760364592075
+mean and std of grammar rank+semantic rank rank is 4633.88198757764, 3736.4614884588364
+mean and std of grammar rank+pos_dep_rank rank is 4903.496894409938, 3364.009884282862
+mean and std of grammar rank+grammar rank+semantic rank rank is 4696.664596273292, 3715.520394144169
+mean and std of grammar rank+grammar rank+pos_dep_rank rank is 4933.080745341615, 3390.894445008491
+mean and std of grammar rank+semantic rank+pos_dep_rank rank is 4386.726708074534, 3525.401358334214
+mean and std of semantic rank+pos_dep_rank rank is 4410.590062111802, 3559.0649904013585
+mean and std of semantic rank+grammar rank+semantic rank rank is 4707.962732919254, 3708.1945116326465
+mean and std of semantic rank+grammar rank+pos_dep_rank rank is 4386.726708074534, 3525.401358334214
+mean and std of semantic rank+semantic rank+pos_dep_rank rank is 4562.155279503106, 3620.6484718883685
+mean and std of pos_dep_rank+grammar rank+semantic rank rank is 4386.726708074534, 3525.401358334214
+mean and std of pos_dep_rank+grammar rank+pos_dep_rank rank is 4945.962732919254, 3393.2272081460274
+mean and std of pos_dep_rank+semantic rank+pos_dep_rank rank is 4595.695652173913, 3592.5862307735188
+mean and std of grammar rank+semantic rank+grammar rank+pos_dep_rank rank is 4538.211180124224, 3529.4849755487303
+mean and std of grammar rank+semantic rank+semantic rank+pos_dep_rank rank is 4373.857142857143, 3649.3770424846875
+mean and std of grammar rank+pos_dep_rank+semantic rank+pos_dep_rank rank is 4513.5590062111805, 3468.641010620587
+mean and std of grammar rank+semantic rank+grammar rank+semantic rank rank is 4633.88198757764, 3736.4614884588364
+mean and std of grammar rank+pos_dep_rank+grammar rank+semantic rank rank is 4538.211180124224, 3529.4849755487303
+mean and std of grammar rank+pos_dep_rank+grammar rank+pos_dep_rank rank is 4903.496894409938, 3364.009884282862
+mean and std of grammar rank+grammar rank+semantic rank+grammar rank+pos_dep_rank rank is 4656.378881987577, 3537.727091552038
+mean and std of grammar rank+grammar rank+semantic rank+semantic rank+pos_dep_rank rank is 4417.658385093167, 3628.696858215064
+mean and std of grammar rank+grammar rank+pos_dep_rank+semantic rank+pos_dep_rank rank is 4565.869565217391, 3438.877353385903
+mean and std of semantic rank+pos_dep_rank+grammar rank+semantic rank rank is 4373.857142857143, 3649.3770424846875
+mean and std of semantic rank+pos_dep_rank+grammar rank+pos_dep_rank rank is 4513.5590062111805, 3468.641010620587
+mean and std of semantic rank+pos_dep_rank+semantic rank+pos_dep_rank rank is 4410.590062111802, 3559.0649904013585
+mean and std of semantic rank+grammar rank+semantic rank+grammar rank+pos_dep_rank rank is 4417.658385093167, 3628.696858215064
+mean and std of semantic rank+grammar rank+semantic rank+semantic rank+pos_dep_rank rank is 4494.546583850932, 3688.67938758289
+mean and std of semantic rank+grammar rank+pos_dep_rank+semantic rank+pos_dep_rank rank is 4337.888198757764, 3548.0690646353487
+mean and std of pos_dep_rank+grammar rank+semantic rank+grammar rank+pos_dep_rank rank is 4565.869565217391, 3438.877353385903
+mean and std of pos_dep_rank+grammar rank+semantic rank+semantic rank+pos_dep_rank rank is 4337.888198757764, 3548.0690646353487
+mean and std of pos_dep_rank+grammar rank+pos_dep_rank+semantic rank+pos_dep_rank rank is 4641.391304347826, 3477.1684406531003
+mean and std of grammar rank+semantic rank+grammar rank+pos_dep_rank+semantic rank+pos_dep_rank rank is 4386.726708074534, 3525.401358334214
