@@ -126,5 +126,5 @@ if __name__ == "__main__":
         )
 
     file_name = "extended_" + os.path.basename(args.cscs)
-    cscs.to_csv(file_name, index=False)
+    cscs.to_csv(file_name, index=False, sep='\t')
     print(file_name + " has been written")
