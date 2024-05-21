@@ -1,2 +1,5 @@
 *.fasta
 *.fa
+*.tmp
+*.csv
+data/
