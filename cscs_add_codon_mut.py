@@ -98,12 +98,12 @@ if __name__ == "__main__":
     parser.add_argument("cscs", type=str, help="path of cscs table")
     parser.add_argument("wt", type=str, help="path of wild type position table(csv)")
     parser.add_argument(
-        "indep",
+        "--indep",
         type=str,
         help="path of position independent codon mutation probability(json)",
     )
     parser.add_argument(
-        "dep",
+        "--dep",
         type=str,
         help="path of position dependent codon mutation probability table(json)",
     )
@@ -112,19 +112,24 @@ if __name__ == "__main__":
     wt_pos = pd.read_csv(args.wt)
 
     # get codon mutation value and rank respectively
-    with open(args.indep) as json_fs:
-        indep = json.load(json_fs)
-        cscs["codon indep"] = cscs.apply(
-            lambda row: pos_indep_prob(wt_pos, indep, row["pos"], row["mut"]), axis=1
-        )
-    with open(args.dep) as json_fs:
-        dep = json.load(json_fs)
-        dep_sum = sum(dep.values())
-        cscs["codon dep"] = cscs.apply(
-            lambda row: pos_dep_weight(wt_pos, dep, dep_sum, row["pos"], row["mut"]),
-            axis=1,
-        )
+    if args.indep:
+        with open(args.indep) as json_fs:
+            indep = json.load(json_fs)
+            cscs["codon indep"] = cscs.apply(
+                lambda row: pos_indep_prob(wt_pos, indep, row["pos"], row["mut"]),
+                axis=1,
+            )
+    if args.dep:
+        with open(args.dep) as json_fs:
+            dep = json.load(json_fs)
+            dep_sum = sum(dep.values())
+            cscs["codon dep"] = cscs.apply(
+                lambda row: pos_dep_weight(
+                    wt_pos, dep, dep_sum, row["pos"], row["mut"]
+                ),
+                axis=1,
+            )
 
     file_name = "extended_" + os.path.basename(args.cscs)
-    cscs.to_csv(file_name, index=False, sep='\t')
+    cscs.to_csv(file_name, index=False, sep="\t")
     print(file_name + " has been written")
