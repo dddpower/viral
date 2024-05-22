@@ -1,0 +1,14 @@
+mean and std of grammar rank+sem change rank rank is	2058.205882352941,	1914.859297431348
+mean and std of grammar rank+indep rank rank is	3189.929411764706,	2414.1186211289014
+mean and std of grammar rank+dep rank rank is	3540.5529411764705,	2555.9632027144585
+mean and std of sem change rank+indep rank rank is	3789.764705882353,	2717.1918507489563
+mean and std of sem change rank+dep rank rank is	4192.170588235294,	2895.9568673977265
+mean and std of indep rank+dep rank rank is	5043.764705882353,	3089.5752648366006
+mean and std of grammar rank+sem change rank+indep rank rank is	2550.4470588235295,	2173.2032883933352
+mean and std of grammar rank+sem change rank+dep rank rank is	2864.3,	2354.112415433265
+mean and std of grammar rank+indep rank+dep rank rank is	3943.141176470588,	2764.367942579841
+mean and std of sem change rank+indep rank+dep rank rank is	4404.211764705882,	2991.035599067714
+mean and std of grammar rank rank is	2255.029411764706,	1971.1109276422414
+mean and std of sem change rank rank is	3872.1470588235293,	2656.129467378521
+mean and std of indep rank rank is	4823.888235294117,	3035.615971217842
+mean and std of dep rank rank is	5391.235294117647,	3197.4776454920698
