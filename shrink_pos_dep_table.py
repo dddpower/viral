@@ -1,3 +1,6 @@
+"""Shrink the original position "12276_2021_658_MOESM2_ESM.xlsx" to covid, flu, hiv
+since the file size is too big."""
+
 import argparse
 import pandas as pd
 import functools

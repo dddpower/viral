@@ -1,3 +1,9 @@
+"""Add position dependent/independent codon mutation chance score,
+value columns to the original cscs result table. For this purpose, this class stores
+informations - cscs result table, position dependent/independent mutation table respectively,
+wildtype codon position table for each virus.
+"""
+
 from Bio.Data import CodonTable
 import pandas as pd
 from itertools import permutations, combinations
@@ -23,13 +29,6 @@ def to_codons(ammino_acid):
     ]
     assert len(codons) > 0, f"ammino_acid = {ammino_acid}"
     return codons
-
-
-"""Add position dependent/independent codon mutation chance,
-value columns to the original cscs result table. For this purpose, this class stores
-informations - cscs result table, position dependent/independent mutation table respectively,
-wildtype codon position table for each virus.
-"""
 
 
 def codon_from_aa_pos(wt_positions, source_position):

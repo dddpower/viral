@@ -1,0 +1,7 @@
+mean and std of grammar rank+semantic change rank rank is 20409.78947368421, 2646.5621217586195
+mean and std of grammar rank+dep rank rank is 21438.0, 2453.7301309548197
+mean and std of semantic change rank+dep rank rank is 20855.0, 2952.157459666856
+mean and std of grammar rank+semantic change rank+dep rank rank is 22238.21052631579, 1496.8761760912985
+mean and std of grammar rank+indep rank rank is 21545.473684210527, 2329.784047417773
+mean and std of semantic change rank+indep rank rank is 20945.42105263158, 2998.627784611367
+mean and std of grammar rank+semantic change rank+indep rank rank is 22305.21052631579, 1405.4356611602036
