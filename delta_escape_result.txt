@@ -1,0 +1,7 @@
+mean and std of grammar rank rank is	244.0,	177.74419821755083
+mean and std of sem change rank rank is	8504.333333333334,	6411.031144311602
+mean and std of indep rank rank is	9902.666666666666,	4526.957072176998
+mean and std of grammar rank+sem change rank rank is	1715.3333333333333,	1961.9853040564126
+mean and std of grammar rank+indep rank rank is	2833.0,	2179.663276747122
+mean and std of sem change rank+indep rank rank is	8249.0,	6266.186479829658
+mean and std of grammar rank+sem change rank+indep rank rank is	2626.6666666666665,	2188.9029976984666
