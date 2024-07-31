@@ -1,5 +1,5 @@
-# about data
-used original cscs datatable as a source
+# escape mutant prediction mechanism
+Single token change probability and L1 norm value from the wildtype to the current mutant sequence is produced as a result of the model inference. The model doesn't reflect any biological fact in itself i.e. actual mutation occurs not in amino acids but in nuecletides. We hypothesized prediction performance can be increased by adding extra (biological) term to the original equation.
 
 # about codon mutation weight value
 referred the figure of ?
