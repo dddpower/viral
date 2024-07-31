@@ -1,6 +1,8 @@
-"""Add position dependent/independent codon mutation chance score,
-value columns to the original cscs result table. For this purpose, this class stores
-informations - cscs result table, position dependent/independent mutation table respectively,
+"""Add
+position dependent/independent codon mutation chance score, value columns 
+to the original cscs result table. 
+
+For this purpose, this class stores informations - cscs result table, position dependent/independent mutation table respectively,
 wildtype codon position table for each virus.
 """
 
