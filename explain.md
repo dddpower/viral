@@ -1,6 +1,43 @@
 Supplementary Table 4 contains data on various types of substitutions across different viruses, including SARS-CoV-2. Below is a structured methodology to use these codon mutation in your research paper.
 
-### Methodology:
+### Methodology:  
+### Preliminary
+**Define grammarticality and semantic change**
+
+1.  sequence of amino acids (or sequence of tokens in NLP view) $X$ is defined as:
+    $$
+    X \stackrel{\text{def}}{=} (x_1, ..., x_N)
+    $$
+    such that $x \in \mathcal{X}, i \in [N]$, where $\mathcal{X}$ is a alphabet which represents amino acids for protein sequence.
+
+2.  Latent variable for the semantic embedding, $Z$ is defined as:
+    $$
+    Z \stackrel{\text{def}}{=} f_s(X)
+    $$ 
+    where, $f_s : \mathcal{X}^N \to \mathbb{R}$ embeds discrete-alphabet sequences into a $K$ dimensional continuous space. Ideally, closeness in embedding space would correspond to semantic similarity (e.g., more similar in meaning).
+
+3. we define the con
+4. Define a sequence, where $x_i$ is excluded from $X$, as $X_{[N] \setminus \{i\}}$:
+    $$
+    X_{[N] \setminus \{i\}} \stackrel{\text{def}}{=} (..., x_{i-1}, x_{i+i}, ...)
+    $$
+6. Bidirectional LSTM model was used to define the estimated latent space:
+$$
+\hat{Z_i} \stackrel{\text{def}}{=} \left[ \mathrm{LSTM}_f \left( g_f (x_1, \ldots, x_{i-1}) \right)^T, \; \mathrm{LSTM}_r \left( g_r (x_{i+1}, \ldots, x_N) \right)^T \right]^T
+$$
+
+4. Estimated latent variable $\hat{Z_i}$ encodes the sequence context, 
+    $$
+    \hat{Z_i} = \hat{f_s}(X_{[N]\setminus\set{i}})
+    $$
+
+
+5. Given $\hat{Z_i}$, $x_i$ is conditionally independent of its context, which leads:
+$$
+\hat{p}(x_i|X_{[N]\setminus\set{i}}, \hat{Z_i}) = \hat{p}(x_i|\hat{Z_i})
+$$
+
+    
 #### Incorporating Codon Mutation Weights:
 1. **Existing Model Recap**:
    - The current model predicts viral escape mutations based on semantic change $\Delta z[\tilde{x}_i]$ and grammaticality $p(\tilde{x}_i | \mathbf{x})$ terms. These are combined using the formula:
