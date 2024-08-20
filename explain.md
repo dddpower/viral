@@ -66,7 +66,7 @@ $$
 1. **Existing Model Recap**:
    - The current model predicts viral escape mutations based on semantic change $\Delta z[\tilde{x}_i]$ and grammaticality $p(\tilde{x}_i | \mathbf{x})$ terms:
      $$
-     a'(\tilde{x}_i; \mathbf{x}) = \text{rank}(\Delta z[\tilde{x}_i]) + \beta \cdot \text{rank}(p(\tilde{x}_i | \mathbf{x}))
+     a'(\tilde{x}_i; \mathbf{x}) \equiv \text{rank}(\Delta z[\tilde{x}_i]) + \beta \cdot \text{rank}(p(\tilde{x}_i | \mathbf{x}))
      $$
 
 2. **Introduction of Codon Mutation Weights**:
